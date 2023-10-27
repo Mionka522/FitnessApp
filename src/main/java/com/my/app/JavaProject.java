@@ -19,6 +19,7 @@ public class JavaProject {
             case 1:
                 mem = mm.addMembers(members);
                 FileHandler.appendFile(mem);
+                System.out.println(mem);
             case 2:
                 mm.removeMember(members);
             case 3:

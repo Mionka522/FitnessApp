@@ -65,7 +65,7 @@ public class MembershipManagement implements Calculator {
         double cal = calculateFees(club);
         mbr = new Member(mem,memberID,name,cal);
         members.add(mbr);
-        return "Добавлен " + name + "в клуб "+club;
+        return mem +" "+ memberID +" "+  name +" "+   cal;
     }
 
     @Override

@@ -16,6 +16,9 @@ public class Member {
     public String toString() {
         return getMemberType()+" "+ getMemberID()+" "+ getName()+" "+ getFees();
     }
+    public String toStringForFile(){
+        return getMemberType()+";"+ getMemberID()+";"+ getName()+";"+ getFees();
+    }
 
     public String getMemberType() {
         return memberType;

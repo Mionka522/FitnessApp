@@ -46,9 +46,9 @@ public class FileHandler {
 
         try {
 
-            FileWriter writer = new FileWriter("FitnessDOC3.csv",true);
+           FileWriter writer = new FileWriter("FitnessDOC3.csv",true);
 
-            writer.write(newMember);
+            writer.write(newMember+"\n");
             writer.close();
 
             System.out.println("Добавлен "+newMember);

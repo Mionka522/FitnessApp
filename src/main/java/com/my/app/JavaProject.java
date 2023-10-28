@@ -11,14 +11,7 @@ public class JavaProject {
         String newMember;
         MembershipManagement mm;
         LinkedList<Member> members = FileHandler.readFile();
-
-
-
-
         mm = new MembershipManagement();
-
-
-
 
 
         switch (mm.getChoice()) {
@@ -30,11 +23,16 @@ public class JavaProject {
                 menu();//возврат к выбору действия
 
             case 2:
-                mm.removeMember(members);
-                menu();
+                mm.removeMember(members); //удалить посетителя из LinkedList
+                mm.overwriteFile(members); //перезаписать файл CSV на основе обновленного LinkedList
+                menu(); //возврат в меню
             case 3:
-                mm.printMemberInfo(members);
-                menu();
+                mm.printMemberInfo(members); //вывести информацию о конкретном посетителе
+                menu();//возврат в меню
+
+            case 4:
+                mm.showAll(); //показать всех в файле CSV
+                menu();//возврат в меню
         }
 
     }

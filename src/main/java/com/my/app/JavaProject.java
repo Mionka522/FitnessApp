@@ -26,6 +26,7 @@ public class JavaProject {
                 newMember = mm.addMembers(members); //метод добавления формирования String newMember из полученной информации
                 FileHandler.appendFile(newMember);//добавление newMember в файл FitnessDOC3.csv
                 members.stream().forEach(System.out::println);
+
                 menu();//возврат к выбору действия
 
             case 2:

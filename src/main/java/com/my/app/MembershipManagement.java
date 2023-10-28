@@ -70,12 +70,11 @@ public class MembershipManagement implements Calculator {
 
     @Override
     public double calculateFees(int clubID) {
-        double res = 0;
 
         switch (clubID) {
             case 1: return 900;
             case 2: return 950;
-            case 3: return 100;
+            case 3: return 1000;
             default:return -1;
         }
     }

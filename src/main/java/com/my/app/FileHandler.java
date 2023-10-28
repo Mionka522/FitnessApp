@@ -1,5 +1,7 @@
 package com.my.app;
 
+import com.opencsv.CSVWriter;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -41,10 +43,12 @@ public class FileHandler {
 
     public static void appendFile(String newMember){
         // Запись нового посетителя в файл FitnessDOC3.csv
+
         try {
 
-            FileWriter writer = new FileWriter("FitnessDOC3.csv", false);
-            writer.write(newMember+"\n");
+            FileWriter writer = new FileWriter("FitnessDOC3.csv",true);
+
+            writer.write(newMember);
             writer.close();
 
             System.out.println("Добавлен "+newMember);

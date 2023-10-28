@@ -14,7 +14,7 @@ public class Member {
     }
    @Override
     public String toString() {
-        return getMemberType()+" " + getMemberID()+" "+ getName()+" "+ getFees();
+        return getMemberType()+" "+ getMemberID()+" "+ getName()+" "+ getFees();
     }
 
     public String getMemberType() {

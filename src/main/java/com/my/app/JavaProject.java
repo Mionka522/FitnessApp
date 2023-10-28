@@ -11,7 +11,7 @@ public class JavaProject {
         String newMember;
         MembershipManagement mm;
         LinkedList<Member> members = FileHandler.readFile();
-        System.out.println(members);
+
 
 
 
@@ -31,10 +31,10 @@ public class JavaProject {
 
             case 2:
                 mm.removeMember(members);
-
+                menu();
             case 3:
                 mm.printMemberInfo(members);
-
+                menu();
         }
 
     }

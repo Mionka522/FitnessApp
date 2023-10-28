@@ -15,7 +15,6 @@ public class MembershipManagement implements Calculator {
 
     public int getIntInput() {
 
-        System.out.print("Введите номер: ");
         int num = in.nextInt();
 
         return num;
@@ -26,16 +25,19 @@ public class MembershipManagement implements Calculator {
         System.out.println("2) Club Neptune");
         System.out.println("3) Club Jupiter");
         System.out.println("4) Multi Clubs");
+        System.out.println("\n");
+        System.out.println("Выберете клуб");
 
     }
     public int getChoice() {
 
-        System.out.println("WELCOME TO OZONE FITNESS CENTER\n" +
-                "================================\n" +
+        System.out.println("\nWELCOME TO OZONE FITNESS CENTER\n" +"\n"+
+                "================================\n" +"\n"+
                 "1) Add Member\n" +
                 "2) Remove Member\n" +
                 "3) Display Member Information\n" +
-                "Please select an option (or Enter -1 to quit):\n");
+                "Please select an option (or Enter -1 to quit):\n" +
+                "\n"+"Выберете действие: ");
         int choice = getIntInput();
         return choice;
     }
@@ -81,37 +83,45 @@ public class MembershipManagement implements Calculator {
     public void removeMember(LinkedList<Member> members) {
         int memberID;
         System.out.print("Введите ID удаляемого посетителя: ");
-
-        while (!members.contains(memberID =getIntInput() )) {
-            System.out.print("Такого посетителя нет, введите ID удаляемого посетителя ещё раз: ");
-        }
-        System.out.println ("Вы ввели ID " + memberID);
-
-        int finalMemberID = memberID;
-        Member del = members.stream()
-                .filter(d ->(d.getMemberID() == finalMemberID))
-                .findFirst()
-                .orElse(null);
-
-        System.out.println ("Пользователь" + del.toString() + "был удален");
-        members.remove(del);
+        Member finded = null;
+        while (finded == null)
+        for(Member member : members) {
+            if (member.getMemberID() == getIntInput()) {
+                finded = member;
+                break;
+            } else {
+                System.out.print("Такого посетителя нет, введите ID удаляемого посетителя ещё раз: ");
             }
+        }
+            System.out.println("Вы ввели ID " + finded.getMemberID());
+        members.remove(finded);
+        System.out.println("Посетитель был удален");
+        }
 
     public void printMemberInfo(LinkedList<Member> members) {
-        int memberID;
-        System.out.print("Для получения информации о посетителе введите его ID: ");
 
-        while (!members.contains(memberID =getIntInput() )) {
-            System.out.print("Такого посетителя нет, введите ID посетителя ещё раз: ");
+        System.out.print("Введите ID посетителя , о котором хотите получить информацию: ");
+        Member finded = null;
+
+        while (true) {
+            int memberID = getIntInput();
+            for (Member member : members) {
+                if (member.getMemberID() == memberID) {
+                    finded = member;
+                    break;
+                }
+            }
+            if (finded == null) {
+                System.out.print("Такого посетителя нет, введите ID удаляемого посетителя ещё раз: ");
+
+            }
+
+            if (finded != null) {
+                System.out.println("Вы ввели ID " + finded.getMemberID());
+                System.out.println(finded.toString());
+                break;
+            }
         }
-        System.out.println ("Вы ввели ID " + memberID);
-
-        int finalMemberID = memberID;
-        Member info = members.stream()
-                .filter(d ->(d.getMemberID() == finalMemberID))
-                .findFirst()
-                .orElse(null);
-        System.out.print(info.toString());
     }
     public void overwriteFile(LinkedList<Member> m) throws IOException {
         String n = "FitnessDOC3.csv";

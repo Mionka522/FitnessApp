@@ -5,25 +5,35 @@ import java.util.LinkedList;
 
 public class JavaProject {
     public static void main(String[] args) throws IOException {
-        String mem;
+        menu();
+    }
+    public static void menu() throws IOException {
+        String newMember;
         MembershipManagement mm;
-        FileHandler fh = new FileHandler();
         LinkedList<Member> members = FileHandler.readFile();
-        int choice;
         System.out.println(members);
 
-        mm = new MembershipManagement();
-        choice =mm.getChoice();
 
-        switch (choice) {
+
+        mm = new MembershipManagement();
+
+
+
+
+
+        switch (mm.getChoice()) {
             case 1:
-                mem = mm.addMembers(members);
-                FileHandler.appendFile(mem);
-                System.out.println(mem);
+                newMember = mm.addMembers(members); //метод добавления формирования String newMember из полученной информации
+                FileHandler.appendFile(newMember);//добавление newMember в файл FitnessDOC3.csv
+                members.stream().forEach(System.out::println);
+                menu();//возврат к выбору действия
+
             case 2:
                 mm.removeMember(members);
+
             case 3:
                 mm.printMemberInfo(members);
+
         }
 
     }

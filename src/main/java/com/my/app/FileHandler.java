@@ -21,6 +21,7 @@ public class FileHandler {
     }
 
     public static LinkedList<Member> readFile() throws IOException {
+        // Чтение из файла и перенос информации в LinkedList
 
        LinkedList<Member> members = new LinkedList<>();
 
@@ -38,20 +39,20 @@ public class FileHandler {
 
 
 
-    public static void appendFile(String mem){
+    public static void appendFile(String newMember){
+        // Запись нового посетителя в файл FitnessDOC3.csv
         try {
-            FileWriter writer = new FileWriter("FitnessDOC3.temp", true);
 
-            writer.write(mem +"\n");
-
+            FileWriter writer = new FileWriter("FitnessDOC3.csv", false);
+            writer.write(newMember+"\n");
             writer.close();
+
+            System.out.println("Добавлен "+newMember);
 
         } catch (IOException e) {
             System.out.println("Возникла ошибка во время записи, проверьте данные.");
         }
 
     }
-      public void overWriteFile(LinkedList<Member> m){
 
-      }
 }

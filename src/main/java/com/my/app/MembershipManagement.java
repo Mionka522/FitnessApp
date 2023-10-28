@@ -9,15 +9,15 @@ import java.util.Scanner;
 public class MembershipManagement implements Calculator {
     LinkedList<Member> members = FileHandler.readFile();
     int PEOPLE_ID =members.size();
-
+    Scanner in = new Scanner(System.in);
     public MembershipManagement() throws IOException {
     }
 
     public int getIntInput() {
-        Scanner in = new Scanner(System.in);
+
         System.out.print("Введите номер: ");
         int num = in.nextInt();
-        in.close();
+
         return num;
 
     }
@@ -46,26 +46,26 @@ public class MembershipManagement implements Calculator {
 
         printClubOptions();
 
-        Scanner input = new Scanner(System.in);
+
 
         System.out.print("Введите номер клуба: ");
-        club= input.nextInt();
+        club= in.nextInt();
 
         System.out.println("Введите информацию о новом посетителе");
 
         System.out.print("Введите Имя: ");
-        name = input.nextLine();
+        name = in.next();
 
         System.out.print("Введите тип посетителя: ");
-        mem = input.nextLine();
+        mem = in.next();
 
 
-        int memberID= PEOPLE_ID++;
+        int memberID= ++PEOPLE_ID;
         Member mbr;
         double cal = calculateFees(club);
         mbr = new Member(mem,memberID,name,cal);
         members.add(mbr);
-        return mem +" "+ memberID +" "+  name +" "+   cal;
+        return mem+";"+memberID +";"+name+";"+cal;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.my.app;
 
 import java.io.*;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -152,29 +153,27 @@ public class MembershipManagement implements Calculator {
         }
     }
     public void overwriteFile(LinkedList<Member> members) throws IOException {
-        this.members = members;
         String fileName = "FitnessDOC3.csv";
-        File newFileTemp = File.createTempFile("FitnessDOC3", ".temp",new File("D:\\IdeaProjects\\Fitnes\\src\\main\\resources"));
-        FileWriter writerTemp = new FileWriter(newFileTemp, true);
+        String title = "Тип посетителя;Номер;клуба;Имя;Оплата";
+        this.members = members;
+        File newFileTemp = File.createTempFile("FitnessDOC3", ".temp", new File("D:\\IdeaProjects\\Fitnes"));
+        BufferedWriter writerTemp = new BufferedWriter(new FileWriter(newFileTemp));
+        File oldF = new File("FitnessDOC3.csv");
 
-      // File fileTemp = Path.of("FitnessDOC3.temp").toFile();
-      // File oldF = new File("FitnessDOC3.csv");
-
-
-
-        this.members.stream().forEach(s -> {
+        writerTemp.write(title + "\n");
+        this.members.stream().forEach(s ->
+        {
             try {
-                writerTemp.write(s.toStringForFile());
+                writerTemp.write(s.toStringForFile()+"\n");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
+        writerTemp.close();
 
 
-        //oldF.delete();
-
-
-        //fileTemp.renameTo(new File(fileName));
+        oldF.delete();
+        newFileTemp.renameTo(new File(fileName));
 
 
     }

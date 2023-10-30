@@ -1,7 +1,5 @@
 package com.my.app;
 
-import com.opencsv.CSVWriter;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,7 +25,7 @@ public class FileHandler {
 
        LinkedList<Member> members = new LinkedList<>();
 
-       Path path = Path.of("src","main","resources", "FitnessDOC3.csv");
+       Path path = Path.of("FitnessDOC3.csv");
        Files.lines(path)
                .skip(1)
                .map(line -> {

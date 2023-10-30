@@ -1,7 +1,6 @@
 package com.my.app;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -155,11 +154,11 @@ public class MembershipManagement implements Calculator {
     public void overwriteFile(LinkedList<Member> members) throws IOException {
         this.members = members;
         String fileName = "FitnessDOC3.csv";
-        File newFileTemp = File.createTempFile("FitnessDOC3", ".temp", new File("src/main/resources"));
+        File newFileTemp = File.createTempFile("FitnessDOC3", ".temp",new File("D:\\IdeaProjects\\Fitnes\\src\\main\\resources"));
         FileWriter writerTemp = new FileWriter(newFileTemp, true);
 
-       File file = Path.of("src","main","FitnessDOC3.temp").toFile();
-       File oldF = new File("FitnessDOC3.csv");
+      // File fileTemp = Path.of("FitnessDOC3.temp").toFile();
+      // File oldF = new File("FitnessDOC3.csv");
 
 
 
@@ -172,10 +171,10 @@ public class MembershipManagement implements Calculator {
         });
 
 
-        oldF.delete();
+        //oldF.delete();
 
 
-        file.renameTo(new File(fileName));
+        //fileTemp.renameTo(new File(fileName));
 
 
     }

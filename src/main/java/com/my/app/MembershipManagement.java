@@ -23,8 +23,8 @@ public class MembershipManagement implements Calculator {
         int num = in.nextInt();
 
         return num;
-
     }
+
     public void printClubOptions() {
         //вывод информации
         System.out.println("1) Club Mercury");
@@ -33,8 +33,8 @@ public class MembershipManagement implements Calculator {
         System.out.println("4) Multi Clubs");
         System.out.println("\n");
         System.out.println("Выберете клуб");
-
     }
+
     public int getChoice() {
         //Вывод информации о существующих командах
 
@@ -75,11 +75,19 @@ public class MembershipManagement implements Calculator {
 
 
         int memberID= ++PEOPLE_ID;
-        Member mbr;
+
+
         double cal = calculateFees(club);
-        mbr = new Member(mem,memberID,name,cal);
-        this.members.add(mbr);
-        return mem+";"+memberID +";"+name+";"+cal;
+        if (club ==4) {
+            MultiClubMember multiClubMember = new MultiClubMember(mem,memberID,name,cal,100);
+            this.members.add(multiClubMember);
+            System.out.println("Успешное добавлене нового посетителя нескольких клубов!\nДобро пожаловать, " + name );
+        }else {
+            SingleClubMember singleClubMemberbr = new SingleClubMember(mem, memberID, name, cal,100);
+            this.members.add(singleClubMemberbr);
+            System.out.println("Успешное добавлене нового посетителя клуба!\nДобро пожаловать, " + name );
+        }
+        return mem+";"+memberID +";"+name+";"+cal+"100";
     }
 
     @Override
@@ -90,6 +98,7 @@ public class MembershipManagement implements Calculator {
             case 1: return 900;
             case 2: return 950;
             case 3: return 1000;
+            case 4: return 1200;
             default:return -1;
         }
     }

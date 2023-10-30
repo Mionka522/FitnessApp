@@ -100,11 +100,15 @@ public class MembershipManagement implements Calculator {
 
         this.members = members;
 
-        System.out.print("Введите ID удаляемого посетителя: ");
+        System.out.print("Введите ID удаляемого посетителя или -1 для выхода в меню: ");
         Member finded = null;
 
         while (true) {
             int memberID = getIntInput();
+            if(memberID == -1) {
+                System.out.println("Возврат в меню...");
+                break;
+            }
             for (Member member : this.members) {
                 if (member.getMemberID() == memberID) {
                     finded = member;

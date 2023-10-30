@@ -49,7 +49,7 @@ public class FileHandler {
             writer.write(newMember+"\n");
             writer.close();
 
-            System.out.println("Добавлен "+newMember);
+            System.out.println("Добавлен новый посетитель!");
 
         } catch (IOException e) {
             System.out.println("Возникла ошибка во время записи, проверьте данные.");

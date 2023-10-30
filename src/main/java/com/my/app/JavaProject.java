@@ -7,18 +7,18 @@ public class JavaProject {
     public static void main(String[] args) throws IOException {
         menu();
     }
-    public static void menu() throws IOException {
+    public static void menu() throws IOException, IllegalArgumentException {
         String newMember;
         MembershipManagement mm;
         LinkedList<Member> members = FileHandler.readFile();
         mm = new MembershipManagement();
+        int choice = mm.getChoice();
 
+        switch (choice) {
 
-        switch (mm.getChoice()) {
             case 1:
                 newMember = mm.addMembers(members); //метод добавления формирования String newMember из полученной информации
                 FileHandler.appendFile(newMember);//добавление newMember в файл FitnessDOC3.csv
-                members.stream().forEach(System.out::println);
 
                 menu();//возврат к выбору действия
 
@@ -33,6 +33,13 @@ public class JavaProject {
             case 4:
                 mm.showAll(); //показать всех в файле CSV
                 menu();//возврат в меню
+            case -1:
+                System.out.println("Завершение программы");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Не могу распознать команду с номерм  " + choice+"\nПопытайтесь еще раз");
+                menu();
         }
 
     }
